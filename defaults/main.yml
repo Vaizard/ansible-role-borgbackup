@@ -18,9 +18,11 @@ borgbackup_server_home: "/home/borgbackup"
 borgbackup_server_pool: "{{ borgbackup_server_home }}/repos"
 
 
-### Client (backuped machine) default configuration.
+### Client (backuped machine) default configuration. Only a single {{ borgbackup_client_backup_server }} 
+### is supported, so multi-target backups arent currently available.
 borgbackup_client: false
-borgbackup_client_ssh_key_file: "/root/.ssh/id_rsa_borgbackup"
+borgbackup_client_ssh_key_type: "ed25519"
+borgbackup_client_ssh_key_file: "/root/.ssh/id_{{ borgbackup_client_ssh_key_type }}_borgbackup"
 borgbackup_client_scripts_dir: "/etc/borg"
 borgbackup_encryption_mode: "none"
 borgbackup_passphrase: "yoursecret"
