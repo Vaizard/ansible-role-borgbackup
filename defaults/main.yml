@@ -19,7 +19,10 @@ borgbackup_server_pool: "{{ borgbackup_server_home }}/repos"
 
 
 ### Client (backuped machine) default configuration. Only a single {{ borgbackup_client_backup_server }} 
-### is supported, so multi-target backups arent currently available.
+### is supported, so multi-target backups arent currently available. In order to encrypt the backups
+### change {{ borgbackup_encryption_mode }} from 'none' to 'keyfile' or 'repokey' (for explanation see
+### https://borgbackup.readthedocs.io/en/stable/usage.html) and use {{ borgbackup_passphrase }} to store
+### the passphrase answer.
 borgbackup_client: false
 borgbackup_client_ssh_key_type: "ed25519"
 borgbackup_client_ssh_key_file: "/root/.ssh/id_{{ borgbackup_client_ssh_key_type }}_borgbackup"
