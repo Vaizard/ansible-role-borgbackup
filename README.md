@@ -20,7 +20,7 @@ Example Playbook
     - hosts: all
       roles:
         - role: SphericalElephant.borgbackup
-          borgbackup_client: True
+          borgbackup_client: true
           borgbackup_client_backup_server: backup01.example.com
           borgbackup_client_jobs:
             - name: system
@@ -40,8 +40,12 @@ Example Playbook
               day: "*"
               hour: "8"
               minute: "0"
-
-You can easily assign client and server attributes from your inventory with something similar to the following:
+    - hosts: backup01.example.com
+      roles:
+        - role: SphericalElephant.borgbackup
+          borgbackup_server: true
+          
+You can also easily assign client and server attributes from your inventory with something similar to the following:
 
     borgbackup_client: "{{ (inventory_hostname in groups.borgbackup_server)|ternary(False, True) }}"
     borgbackup_client_backup_server: "{{ groups.borgbackup_server[0] }}"
