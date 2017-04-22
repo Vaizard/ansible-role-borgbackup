@@ -49,7 +49,7 @@ borgbackup_passphrase: "yoursecret"
 ### Client prune jobs defining how many backups into the past should be 
 ### kept / which backups to prune (again these are bash scripts installed into
 ### "{{ borgbackup_client_scripts_dir }}/prune_{{ borgbackup_client_jobs[]['name'] }}.sh").
-#borgbackup_prune_enabled: yes
+borgbackup_prune_enabled: yes
 #borgbackup_prune_jobs:
 #  - name: system
 #    prune_options: "--keep-daily=7 --keep-weekly=4"
