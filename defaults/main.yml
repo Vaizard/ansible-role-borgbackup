@@ -15,7 +15,7 @@ borgbackup_server: false
 borgbackup_server_user: "borgbackup"
 borgbackup_server_group: "borgbackup"
 borgbackup_server_home: "/home/borgbackup"
-borgbackup_server_pool: "{{ borgbackup_server_home }}/repos"
+borgbackup_server_pool: "/srv/borgbackup/repos"
 
 
 ### Client (backuped machine) default configuration. Only a single {{ borgbackup_client_backup_server }} 
