@@ -14,3 +14,9 @@
 
 - include: install_binary.yml
   when: borgbackup_install_from_binary
+
+- name: install fuse
+  package:
+    name: fuse
+    state: present
+  when: borgbackup_server
