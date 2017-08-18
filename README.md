@@ -19,7 +19,7 @@ Example Playbook
 
     - hosts: all
       roles:
-        - role: SphericalElephant.borgbackup
+        - role: mage-borgbackup
           borgbackup_client: true
           borgbackup_client_backup_server: backup01.example.com
           borgbackup_client_jobs:
@@ -42,7 +42,7 @@ Example Playbook
               minute: "0"
     - hosts: backup01.example.com
       roles:
-        - role: SphericalElephant.borgbackup
+        - role: mage-borgbackup
           borgbackup_server: true
           
 You can also easily assign client and server attributes from your inventory with something similar to the following:
