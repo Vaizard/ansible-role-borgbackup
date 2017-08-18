@@ -9,16 +9,7 @@ borgbackup_binary_platform: "borg-linux64"
 borgbackup_binary_uri: "https://github.com/borgbackup/borg/releases/download/{{ borgbackup_binary_version }}/{{ borgbackup_binary_platform }}"
 borgbackup_binary: "/usr/local/bin/borg"
 
-
-### Server (backup store).
-borgbackup_server: false
-borgbackup_server_user: "borgbackup"
-borgbackup_server_group: "borgbackup"
-borgbackup_server_home: "/home/borgbackup"
-borgbackup_server_pool: "/srv/borgbackup/repos"
-
-
-### Client (backuped machine) default configuration. Only a single {{ borgbackup_client_backup_server }} 
+### Client (the backuped machine) default configuration. Only a single {{ borgbackup_client_backup_server }} 
 ### is supported, so multi-target backups arent currently available. In order to encrypt the backups
 ### change {{ borgbackup_encryption_mode }} from 'none' to 'keyfile' or 'repokey' (for explanation see
 ### https://borgbackup.readthedocs.io/en/stable/usage.html) and use {{ borgbackup_passphrase }} to store
@@ -36,7 +27,6 @@ borgbackup_encryption_mode: "none"
 borgbackup_passphrase: "yoursecret"
 #borgbackup_client_backup_server: backup.example.com
 
-
 ### Client jobs defining what and when to backup (technically bash scripts installed into
 ### "{{ borgbackup_client_scripts_dir }}/{{ borgbackup_client_jobs[]['name'] }}.sh").
 #borgbackup_client_jobs:
@@ -50,6 +40,12 @@ borgbackup_passphrase: "yoursecret"
 #      - "/home"
 #    excludes: []
 
+### Server (backup store).
+borgbackup_server: false
+borgbackup_server_user: "borgbackup"
+borgbackup_server_group: "borgbackup"
+borgbackup_server_home: "/home/borgbackup"
+borgbackup_server_pool: "/srv/borgbackup/repos"
 
 ### Client prune jobs defining how many backups into the past should be 
 ### kept / which backups to prune (again these are bash scripts installed into
