@@ -2,6 +2,7 @@
 
 ### Installation. Defaults to binary in order to simplity version management,
 ### generally we don't want different borgbackup versions on different servers.
+
 borgbackup_install_from_binary: true
 borgbackup_install_from_repo: false
 borgbackup_binary_version: "1.1.0rc1"
@@ -9,11 +10,14 @@ borgbackup_binary_platform: "borg-linux64"
 borgbackup_binary_uri: "https://github.com/borgbackup/borg/releases/download/{{ borgbackup_binary_version }}/{{ borgbackup_binary_platform }}"
 borgbackup_binary: "/usr/local/bin/borg"
 
+
+
 ### Client (the backuped machine) default configuration. Only a single {{ borgbackup_client_backup_server }} 
 ### is supported, so multi-target backups arent currently available. In order to encrypt the backups
 ### change {{ borgbackup_encryption_mode }} from 'none' to 'keyfile' or 'repokey' (for explanation see
 ### https://borgbackup.readthedocs.io/en/stable/usage.html) and use {{ borgbackup_passphrase }} to store
 ### the passphrase answer.
+
 borgbackup_client: false
 # Specify the SSH private key type to use. By default role will generate ED25519 
 # keys if they are supported by the remote host, otherwise RSA keys will be generated.
@@ -26,6 +30,8 @@ borgbackup_client_scripts_dir: "/etc/borg"
 borgbackup_encryption_mode: "none"
 borgbackup_passphrase: "yoursecret"
 #borgbackup_client_backup_server: backup.example.com
+
+
 
 ### Client jobs defining what and when to backup (technically bash scripts installed into
 ### "{{ borgbackup_client_scripts_dir }}/{{ borgbackup_client_jobs[]['name'] }}.sh").
@@ -40,16 +46,22 @@ borgbackup_passphrase: "yoursecret"
 #      - "/home"
 #    excludes: []
 
+
+
 ### Server (backup store).
+
 borgbackup_server: false
 borgbackup_server_user: "borgbackup"
 borgbackup_server_group: "borgbackup"
 borgbackup_server_home: "/home/borgbackup"
 borgbackup_server_pool: "/srv/borgbackup/repos"
 
+
+
 ### Client prune jobs defining how many backups into the past should be 
 ### kept / which backups to prune (again these are bash scripts installed into
 ### "{{ borgbackup_client_scripts_dir }}/prune_{{ borgbackup_client_jobs[]['name'] }}.sh").
+
 borgbackup_prune_enabled: yes
 #borgbackup_prune_jobs:
 #  - name: system
