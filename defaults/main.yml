@@ -5,7 +5,7 @@
 
 borgbackup_install_from_binary: true
 borgbackup_install_from_repo: false
-borgbackup_binary_version: "1.1.0rc1"
+borgbackup_binary_version: "1.1.0rc2"
 borgbackup_binary_platform: "borg-linux64"
 borgbackup_binary_uri: "https://github.com/borgbackup/borg/releases/download/{{ borgbackup_binary_version }}/{{ borgbackup_binary_platform }}"
 borgbackup_binary: "/usr/local/bin/borg"
