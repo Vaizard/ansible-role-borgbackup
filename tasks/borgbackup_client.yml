@@ -24,6 +24,7 @@
 - name: add ssh-pubkey to backup server
   delegate_to: "{{ borgbackup_client_backup_server }}"
   # Start the delegate from the ansible master to avoid distributing more keys
+  become_user: "{{ borgbackup_server_user }}"
   connection: local
   authorized_key:
     user: "{{ borgbackup_server_user }}"
@@ -33,6 +34,7 @@
 - name: create repo path for host
   delegate_to: "{{ borgbackup_client_backup_server }}"
   # Start the delegate from the ansible master to avoid distributing more keys
+  become_user: "{{ borgbackup_server_user }}"
   connection: local
   file:
     path: "{{ borgbackup_server_pool }}/{{ inventory_hostname }}"
